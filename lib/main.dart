@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_courcenet_dec2025/body/four_body.dart';
 import 'package:flutter_courcenet_dec2025/home_page.dart';
 import 'package:flutter_courcenet_dec2025/login_page.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/bloc/bloc_controller.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/getx/get_binding.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/provider/home_controller.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/provider/provider_controller.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage().initStorage;
   runApp(const MyApp());
 }
 
@@ -12,16 +23,45 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      routes: {
-        '/home': (context) => HomePage(),
-        '/login': (context) => LoginPage()
-      },
-      home: LoginPage()
-      //HomePage()
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider(create: (context) => ProviderController()),
+    //     ChangeNotifierProvider(create: (context) => HomeController()),
+    //   ],
+    //   child: GetMaterialApp(
+    //     title: 'Flutter Demo',
+    //     debugShowCheckedModeBanner: false,
+    //     theme: ThemeData(),
+    //     // routes: {
+    //     //   '/home': (context) => HomePage(),
+    //     //   '/login': (context) => LoginPage(),
+    //     // },
+    //     getPages: [
+    //       GetPage(name: '/login', page: () => LoginPage()),
+    //       GetPage(name: '/home', page: () => HomePage(), binding: GetBinding()),
+    //     ],
+    //     home: LoginPage(),
+    //     //HomePage()
+    //   ),
+    // );
+    return BlocProvider(
+      create: (context) => BlocController("..."),
+      child: GetMaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(),
+        // routes: {
+        //   '/home': (context) => HomePage(),
+        //   '/login': (context) => LoginPage(),
+        // },
+        getPages: [
+          GetPage(name: '/login', page: () => LoginPage()),
+          GetPage(name: '/home', page: () => HomePage(), binding: GetBinding()),
+        ],
+        home: HomePage()
+        //LoginPage(),
+        //HomePage()
+      ),
     );
   }
 }

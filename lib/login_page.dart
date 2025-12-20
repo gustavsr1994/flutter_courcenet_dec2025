@@ -3,6 +3,8 @@ import 'package:flutter_courcenet_dec2025/color_pallete.dart';
 import 'package:flutter_courcenet_dec2025/custom_button.dart';
 import 'package:flutter_courcenet_dec2025/home_page.dart';
 import 'package:flutter_courcenet_dec2025/style_font_custom.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,7 +17,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final keyForm = GlobalKey<FormState>();
 
-  SharedPreferences? pref;
+  // SharedPreferences? pref;
+  GetStorage box = GetStorage();
   TextEditingController nameField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
   bool isVisible = false;
@@ -28,9 +31,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void checkSession() async {
-    pref = await SharedPreferences.getInstance();
-    if (pref!.getString('name') != null) {
-      Navigator.pushReplacementNamed(context, '/home');
+    //Shared Preference
+    // pref = await SharedPreferences.getInstance();
+    // if (pref!.getString('name') != null) {
+    //   // Navigator.pushReplacementNamed(context, '/home');
+    //   Get.offNamed('/home');
+    // }
+    //Get Storage
+    print("Value: ${box.read("name")}");
+    if (box.read("name") != null) {
+      // Navigator.pushReplacementNamed(context, '/home');
+      Get.offNamed('/home');
+      setState(() {
+        
+      });
     }
   }
 
@@ -183,10 +197,13 @@ class _LoginPageState extends State<LoginPage> {
                     //   context,
                     //   MaterialPageRoute(builder: (context) => HomePage()),
                     // );
-                    pref!.setString('name', nameField.text);
 
-                    Navigator.pushNamed(context, '/home');
+                    // pref!.setString('name', nameField.text);
+
+                    // Navigator.pushNamed(context, '/home');
                     // Navigator.pushReplacementNamed(context, '/home');
+                    // await box.write("name", nameField.text);
+                    Get.offNamed('/home');
                   }
                 },
                 style: ElevatedButton.styleFrom(

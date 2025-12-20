@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/provider/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class FirstBody extends StatefulWidget {
   String name;
-  FirstBody(this.name,{super.key});
+  FirstBody(this.name, {super.key});
 
   @override
   State<FirstBody> createState() => _FirstBodyState();
@@ -50,6 +52,27 @@ class _FirstBodyState extends State<FirstBody> {
                 ),
               ],
             ),
+            Column(
+              children: [
+                ElevatedButton(
+                onPressed:
+                    () =>
+                        context.read<HomeController>().changeColor(Colors.yellow),
+                child: Text("Change Yellow"),
+                            ),
+                            ElevatedButton(
+                onPressed:
+                    () =>
+                        context.read<HomeController>().changeColor(Colors.green),
+                child: Text("Change Green"),
+                            ),
+                            ElevatedButton(
+                onPressed:
+                    () => context.read<HomeController>().changeColor(Colors.red),
+                child: Text("Change Red"),
+                            ),
+              ],
+            )
           ],
         ),
       ),
