@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_courcenet_dec2025/body/four_body.dart';
 import 'package:flutter_courcenet_dec2025/home_page.dart';
 import 'package:flutter_courcenet_dec2025/login_page.dart';
+import 'package:flutter_courcenet_dec2025/slicing_home_page.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/bloc/bloc_controller.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/getx/get_binding.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/home_controller.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/login', page: () => LoginPage()),
           GetPage(name: '/home', page: () => HomePage(), binding: GetBinding()),
         ],
-        home: HomePage()
+        home: SlicingHomePage()
         //LoginPage(),
         //HomePage()
       ),
