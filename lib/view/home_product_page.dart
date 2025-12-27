@@ -18,7 +18,9 @@ class HomeProductPage extends StatelessWidget {
         Get.offAllNamed('/register');
       },),),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/form');
+        },
         child: Icon(Icons.add),
       ),
       body: FutureBuilder(

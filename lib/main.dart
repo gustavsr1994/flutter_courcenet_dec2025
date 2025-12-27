@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_courcenet_dec2025/body/four_body.dart';
 import 'package:flutter_courcenet_dec2025/home_page.dart';
+import 'package:flutter_courcenet_dec2025/statemanagement/provider/form_product_controller.dart';
+import 'package:flutter_courcenet_dec2025/view/form_product_page.dart';
 import 'package:flutter_courcenet_dec2025/view/home_product_page.dart';
 import 'package:flutter_courcenet_dec2025/login_page.dart';
 import 'package:flutter_courcenet_dec2025/slicing_home_page.dart';
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HomeController()),
         ChangeNotifierProvider(create: (context) => AuthController(),),
         ChangeNotifierProvider(create: (context) => MainProductController()),
+        ChangeNotifierProvider(create: (context) => FormProductController(),)
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
@@ -49,6 +52,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/home', page: () => HomePage(), binding: GetBinding()),
           GetPage(name: '/register', page: () => RegisterPage()),
           GetPage(name: '/product', page: () => HomeProductPage()),
+          GetPage(name: '/form', page: () => FormProductPage(),)
         ],
         home: SplashScreen(),
         //LoginPage(),
