@@ -23,10 +23,11 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.sizeOf(context).height / 4,
-            child: controller.isRegisterPage
-                ? bodyRegister(controller)
-                : bodyLogin(controller),
+            height: MediaQuery.sizeOf(context).height / 3,
+            child:
+                controller.isRegisterPage
+                    ? bodyRegister(controller)
+                    : bodyLogin(controller),
           ),
         ],
       ),
@@ -92,6 +93,10 @@ class RegisterPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () => controller.actionLogin(),
             child: Text("Login"),
+          ),
+          ElevatedButton(
+            onPressed: () => controller.actionLoginGmail(),
+            child: Text("Login with Gmail"),
           ),
         ],
       ),

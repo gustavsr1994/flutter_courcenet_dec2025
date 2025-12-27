@@ -77,7 +77,10 @@ class _FormProductPageState extends State<FormProductPage> {
               : SizedBox(
                 height: MediaQuery.sizeOf(context).height / 3,
                 width: MediaQuery.sizeOf(context).width,
-                child: Image.file(controller.imageFile),
+                child:
+                    widget.id != 0
+                        ? Image.network(controller.imageFile.path)
+                        : Image.file(controller.imageFile),
               ),
           Padding(
             padding: const EdgeInsets.all(10),

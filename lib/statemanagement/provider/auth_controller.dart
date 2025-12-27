@@ -33,10 +33,15 @@ class AuthController with ChangeNotifier {
         'password': passwordField.text,
       };
       try {
-        var result = await repository.authRegister(request);
+        // var result = await repository.authRegister(request);
+        var result = await repository.registerEmail(
+          emailField.text,
+          passwordField.text,
+        );
+
         Get.snackbar(
           "Congratulation",
-          result.message!,
+          "Your ID is ${result.user!.uid}",
           snackPosition: SnackPosition.BOTTOM,
         );
       } catch (e) {
@@ -62,18 +67,27 @@ class AuthController with ChangeNotifier {
         'password': passwordField.text,
       };
       try {
-        var result = await repository.authLogin(request);
-        var box = GetStorage();
-        if (result.token != "-") {
-          box.write("token", result.token);
-          Get.toNamed('/product');
-        } else {
-          Get.snackbar(
-            'User not found',
-            '',
-            snackPosition: SnackPosition.BOTTOM,
-          );
-        }
+        // var result = await repository.authLogin(request);
+        var result = await repository.loginEmail(
+          usernameField.text,
+          passwordField.text,
+        );
+        Get.snackbar(
+          'Success Login',
+          'Welcome to ${result.user!.uid}',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        // var box = GetStorage();
+        // if (result.token != "-") {
+        //   box.write("token", result.token);
+        //   Get.toNamed('/product');
+        // } else {
+        //   Get.snackbar(
+        //     'User not found',
+        //     '',
+        //     snackPosition: SnackPosition.BOTTOM,
+        //   );
+        // }
       } catch (e) {
         Get.snackbar(
           'Failed Login',
@@ -85,6 +99,23 @@ class AuthController with ChangeNotifier {
       Get.snackbar(
         'Error',
         'Please, check your field',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  void actionLoginGmail() async {
+    try {
+      var result = await repository.loginGmail();
+      Get.snackbar(
+        'Success Login',
+        'Welcome to ${result.email}',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Error: ${e.toString()}',
         snackPosition: SnackPosition.BOTTOM,
       );
     }

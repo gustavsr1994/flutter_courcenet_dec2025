@@ -21,6 +21,13 @@ class FormProductController with ChangeNotifier {
       qtyField.text = result.qty.toString();
       categoryField.text = result.category ?? '';
       descriptionField.text = result.desc ?? '';
+      imageFile = File(result.url ?? '');
+    }else {
+      nameProductField.clear();
+      qtyField.clear();
+      categoryField.clear();
+      descriptionField.clear();
+      imageFile = File('');
     }
   }
 
