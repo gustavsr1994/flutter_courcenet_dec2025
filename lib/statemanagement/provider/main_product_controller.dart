@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_courcenet_dec2025/repository/product_repository.dart';
+import 'package:flutter_courcenet_dec2025/view/form_product_page.dart';
 import 'package:get/get.dart';
 // import 'package:get_storage/get_storage.dart';
 
@@ -22,9 +23,20 @@ class MainProductController with ChangeNotifier {
       await repository.deleteProduct(id);
       notifyListeners();
     } catch (e) {
-      Get.snackbar("Error", e.toString(), duration: Duration(seconds: 5), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        duration: Duration(seconds: 5),
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
-  
+  void openForm(int id) async {
+    // var index = await Get.toNamed('/form');
+    var index = await Get.to(FormProductPage(id));
+    if (index != null) {
+      await getAllProduct();
+    }
+  }
 }

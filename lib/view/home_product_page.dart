@@ -18,9 +18,7 @@ class HomeProductPage extends StatelessWidget {
         Get.offAllNamed('/register');
       },),),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed('/form');
-        },
+        onPressed: () => controller.openForm(0),
         child: Icon(Icons.add),
       ),
       body: FutureBuilder(
@@ -41,11 +39,19 @@ class HomeProductPage extends StatelessWidget {
                       ),
                       child: ListTile(
                         title: Text(item.name ?? ''),
-                        subtitle: Text(item.category ?? ''),
-                        trailing: IconButton(
-                          onPressed:
-                              () => controller.actionDelete(item.id ?? 0),
-                          icon: Icon(Icons.delete, color: Colors.red),
+                        subtitle: Row(
+                          children: [
+                            IconButton(
+                              onPressed:
+                                  () => controller.actionDelete(item.id ?? 0),
+                              icon: Icon(Icons.delete, color: Colors.red),
+                            ),
+                            IconButton(
+                              onPressed:
+                                  () => controller.openForm(item.id ?? 0),
+                              icon: Icon(Icons.edit, color: Colors.green),
+                            ),
+                          ],
                         ),
                       ),
                     );

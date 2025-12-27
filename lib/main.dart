@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/home', page: () => HomePage(), binding: GetBinding()),
           GetPage(name: '/register', page: () => RegisterPage()),
           GetPage(name: '/product', page: () => HomeProductPage()),
-          GetPage(name: '/form', page: () => FormProductPage(),)
+          // GetPage(name: '/form', page: () => FormProductPage(),)
         ],
         home: SplashScreen(),
         //LoginPage(),

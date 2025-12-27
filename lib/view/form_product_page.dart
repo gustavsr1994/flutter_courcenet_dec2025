@@ -3,8 +3,21 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/form_product_controller.dart';
 import 'package:provider/provider.dart';
 
-class FormProductPage extends StatelessWidget {
-  const FormProductPage({super.key});
+class FormProductPage extends StatefulWidget {
+  final int id;
+  const FormProductPage(this.id, {super.key});
+
+  @override
+  State<FormProductPage> createState() => _FormProductPageState();
+}
+
+class _FormProductPageState extends State<FormProductPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<FormProductController>().initialPage(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +92,10 @@ class FormProductPage extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: Text("Submit")),
+          ElevatedButton(
+            onPressed: () => controller.actionSubmit(context),
+            child: Text("Submit"),
+          ),
         ],
       ),
     );
