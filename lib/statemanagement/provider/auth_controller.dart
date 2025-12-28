@@ -72,11 +72,12 @@ class AuthController with ChangeNotifier {
           usernameField.text,
           passwordField.text,
         );
-        Get.snackbar(
-          'Success Login',
-          'Welcome to ${result.user!.uid}',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        // Get.snackbar(
+        //   'Success Login',
+        //   'Welcome to ${result.user!.uid}',
+        //   snackPosition: SnackPosition.BOTTOM,
+        // );
+        Get.toNamed('/outlet');
         // var box = GetStorage();
         // if (result.token != "-") {
         //   box.write("token", result.token);

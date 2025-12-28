@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_courcenet_dec2025/body/four_body.dart';
 import 'package:flutter_courcenet_dec2025/home_page.dart';
+import 'package:flutter_courcenet_dec2025/map_page.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/form_product_controller.dart';
 import 'package:flutter_courcenet_dec2025/view/form_product_page.dart';
 import 'package:flutter_courcenet_dec2025/view/home_product_page.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_courcenet_dec2025/statemanagement/provider/auth_controll
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/home_controller.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/main_product_controller.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/provider_controller.dart';
+import 'package:flutter_courcenet_dec2025/view/outlet/home_outlet_page.dart';
 import 'package:flutter_courcenet_dec2025/view/register_page.dart';
 import 'package:flutter_courcenet_dec2025/view/splash_screen.dart';
 import 'package:get/get.dart';
@@ -59,8 +61,10 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/register', page: () => RegisterPage()),
           GetPage(name: '/product', page: () => HomeProductPage()),
           // GetPage(name: '/form', page: () => FormProductPage(),)
+          GetPage(name: '/outlet', page: () => HomeOutletPage()),
         ],
-        home: SplashScreen(),
+        home: MapPage()
+        //SplashScreen(),
         //LoginPage(),
         //HomePage()
       ),
