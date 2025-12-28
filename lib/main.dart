@@ -27,9 +27,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage().initStorage;
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -43,9 +41,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ProviderController()),
         ChangeNotifierProvider(create: (context) => HomeController()),
-        ChangeNotifierProvider(create: (context) => AuthController(),),
+        ChangeNotifierProvider(create: (context) => AuthController()),
         ChangeNotifierProvider(create: (context) => MainProductController()),
-        ChangeNotifierProvider(create: (context) => FormProductController(),)
+        ChangeNotifierProvider(create: (context) => FormProductController()),
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
@@ -63,8 +61,8 @@ class MyApp extends StatelessWidget {
           // GetPage(name: '/form', page: () => FormProductPage(),)
           GetPage(name: '/outlet', page: () => HomeOutletPage()),
         ],
-        home: MapPage()
-        //SplashScreen(),
+        home: SplashScreen(),
+        //MapPage()
         //LoginPage(),
         //HomePage()
       ),

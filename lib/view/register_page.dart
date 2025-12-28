@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_courcenet_dec2025/color_pallete.dart';
+import 'package:flutter_courcenet_dec2025/config_notification.dart';
 import 'package:flutter_courcenet_dec2025/statemanagement/provider/auth_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +23,10 @@ class RegisterPage extends StatelessWidget {
                   : 'Change to Form Register',
             ),
           ),
+          // ElevatedButton(
+          //   onPressed: () => ConfigNotification().showNotification(),
+          //   child: Text("Show Notification"),
+          // ),
           SizedBox(
             height: MediaQuery.sizeOf(context).height / 3,
             child:
